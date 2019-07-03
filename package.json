@@ -9,6 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-style-spec": "13.7.1",
     "@urbica/react-map-gl": "1.7.0",
     "mapbox-gl": "1.1.0",
     "react": "16.8.6",

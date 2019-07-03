@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react';
+import { validate } from '@mapbox/mapbox-gl-style-spec';
 import './App.css';
+
 import Map from '../Map/Map';
 import Editor from '../Editor/Editor';
 
 function App() {
   const init = JSON.stringify({
-    paint: {
-      'circle-radius': 10
-    }
-  });
+    version: 8,
+    sources: {
+      'test-source': {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [{
+            type: 'Feature',
+            properties: {},
+            geometry: {
+              type: 'Point',
+              coordinates: [0, 0]
+            }
+          }]
+        }
+      }
+    },
+    layers: [{
+      id: 'test-layer',
+      source: 'test-source',
+      type: 'circle',
+      paint: {}
+    }]
+  }, null, 1);
   const [style, setStyle] = useState(init);
+  const editorRef = createRef();
 
-  const setStyleHandler = (event) => {
-    const newStyle = event.target.value;
+  const setStyleHandler = () => {
+    const { value } = editorRef.current;
 
-    setStyle(newStyle);
+    if (validate(editorRef.current.value).length === 0) {
+      setStyle(value);
+    }
   };
 
   return (
     <div className='App'>
-      <Map
-        style={style}
-      />
+      <Map style={style} />
       <Editor
+        editorRef={editorRef}
         value={style}
         onChange={setStyleHandler}
       />

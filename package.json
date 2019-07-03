@@ -2,19 +2,22 @@
   "name": "style-editor",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@urbica/react-map-gl": "0.7.0-beta.1",
-    "immutable": "4.0.0-rc.12",
-    "mapbox-gl": "0.53.0",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
-    "react-scripts": "2.1.5"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@urbica/react-map-gl": "0.7.0-beta.1",
+    "immutable": "4.0.0-rc.12",
+    "mapbox-gl": "0.53.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3"
+  },
+  "devDependencies": {
+    "git-cz": "3.2.1",
+    "react-scripts": "2.1.5"
   },
   "eslintConfig": {
     "extends": "react-app"

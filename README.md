@@ -2,20 +2,19 @@
 
 ## Development
 
+### Install dependencies
 ```bash
 npm i
 ```
 
 ### Commit
-
 To commit use [git-cz](https://github.com/streamich/git-cz)
 
 ```bash
 git-cz
 ```
 
-## Publish
-
+## Deploy
 ```bash
-npm run publish
+npm run deploy
 ```

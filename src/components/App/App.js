@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import "./App.css";
-import Map from "../Map/Map";
-import Editor from "../Editor/Editor";
+import React, { useState } from 'react';
+import './App.css';
+import Map from '../Map/Map';
+import Editor from '../Editor/Editor';
 
 function App() {
   const init = JSON.stringify({
-    "id": "test-layer",
-    "type": "circle",
-    "source": "test-source",
-    "paint": {
-      "circle-radius": 10
+    paint: {
+      'circle-radius': 10
     }
   });
   const [style, setStyle] = useState(init);

@@ -1,12 +1,11 @@
-import React from "react";
-import MapGL, { Source, Layer } from "@urbica/react-map-gl";
-import Immutable from "immutable";
+import React from 'react';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 
 const Map = ({ style }) => (
   <MapGL
     style={{
-      width: "50%",
-      height: "100vh"
+      width: '50%',
+      height: '100vh'
     }}
     mapStyle={{
       version: 8,
@@ -20,24 +19,25 @@ const Map = ({ style }) => (
   >
     <Source
       id='test-source'
-      source={Immutable.fromJS({
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: [{
-            type: "Feature",
-            properties: {},
-            geometry: {
-              type: "Point",
-              coordinates: [0, 0]
-            }
-          }]
-        }
-      })}
+      type='geojson'
+      data={{
+        type: 'FeatureCollection',
+        features: [{
+          type: 'Feature',
+          properties: {},
+          geometry: {
+            type: 'Point',
+            coordinates: [0, 0]
+          }
+        }]
+      }
+      }
     />
     <Layer
       id='test-layer'
-      layer={Immutable.fromJS(JSON.parse(style))}
+      type='circle'
+      source='test-source'
+      {...JSON.parse(style)}
     />
   </MapGL>
 );

@@ -13,3 +13,9 @@ To commit use [git-cz](https://github.com/streamich/git-cz)
 ```bash
 git-cz
 ```
+
+## Publish
+
+```bash
+npm run publish
+```

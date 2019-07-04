@@ -12,8 +12,8 @@ export default {
             geometry: {
               type: 'Point',
               coordinates: [
-                0,
-                0
+                37.4841,
+                55.8067
               ]
             }
           }

@@ -53,6 +53,9 @@ function App() {
       <button onClick={setStyleHandler}>
         apply
       </button>
+
+      <div className='zoomPanel'>Zoom:{viewport.zoom.toFixed(2)}</div>
+
     </div>
   );
 }

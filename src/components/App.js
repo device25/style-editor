@@ -1,14 +1,19 @@
 import React, { useState, createRef } from 'react';
 import MapGL from '@urbica/react-map-gl';
 import { validate } from '@mapbox/mapbox-gl-style-spec';
-import initStyle from '../config/initStyle';
+import { initStyle, initViewport } from '../config';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const initStyleString = JSON.stringify(initStyle, null, 1);
 
 function App() {
   const [style, setStyle] = useState(initStyleString);
+  const [viewport, setViewport] = useState(initViewport);
   const editorRef = createRef();
+
+  const onViewportChange = (newViewport) => {
+    setViewport(newViewport);
+  };
 
   const setStyleHandler = () => {
     let { value } = editorRef.current;
@@ -37,10 +42,8 @@ function App() {
         }}
         mapStyle={JSON.parse(style)}
         accessToken='pk.eyJ1IjoiZGV2aWNlMjUiLCJhIjoiY2lzaGN3d2tiMDAxOTJ6bGYydDZrcHptdiJ9.UK55aUzBquqYns1AdnuTQg'
-        latitude={0}
-        longitude={0}
-        zoom={0}
-        onViewportChange={() => ({})}
+        {...viewport}
+        onViewportChange={onViewportChange}
       />
       <textarea
         ref={editorRef}

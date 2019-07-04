@@ -3,7 +3,7 @@ import MapGL from '@urbica/react-map-gl';
 import { validate } from '@mapbox/mapbox-gl-style-spec';
 import { initStyle, initViewport } from '../config';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import AceEditor from "react-ace";
+import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/theme/github';
 
@@ -58,10 +58,10 @@ function App() {
           height: '100vh'
         }}
         ref={editorRef}
-        placeholder="JSON Style here"
-        theme="github"
-        mode="json"
-        name="styleEditor"
+        placeholder='JSON Style here'
+        theme='github'
+        mode='json'
+        name='styleEditor'
         fontSize={12}
         showPrintMargin={true}
         showGutter={true}
@@ -73,15 +73,15 @@ function App() {
           enableLiveAutocompletion: false,
           enableSnippets: false,
           showLineNumbers: true,
-          tabSize: 2,
+          tabSize: 2
         }}
       />
       <button onClick={setStyleHandler}>
         apply
       </button>
-
-      <div className='zoomPanel'>Zoom:{viewport.zoom.toFixed(2)}</div>
-
+      <div className='zoomPanel'>
+        {`Zoom: ${viewport.zoom.toFixed(2)}`}
+      </div>
     </div>
   );
 }

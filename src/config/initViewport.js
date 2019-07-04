@@ -1,5 +1,5 @@
 export default {
-  latitude: 0,
-  longitude: 0,
-  zoom: 0
+  latitude: 55.8067,
+  longitude: 37.4841,
+  zoom: 9
 };

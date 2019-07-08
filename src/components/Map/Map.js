@@ -13,7 +13,7 @@ const Map = ({ mapStyle, viewport, onViewportChange, showTileBoundaries }) => {
     <MapGL
       style={style}
       mapStyle={mapStyle}
-      accessToken='pk.eyJ1IjoiZGV2aWNlMjUiLCJhIjoiY2lzaGN3d2tiMDAxOTJ6bGYydDZrcHptdiJ9.UK55aUzBquqYns1AdnuTQg'
+      accessToken={process.env.REACT_APP_ACCESS_TOKEN}
       {...viewport}
       onViewportChange={onViewportChange}
       showTileBoundaries={showTileBoundaries}

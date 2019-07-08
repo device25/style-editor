@@ -1,94 +1,78 @@
-import React, { useState } from 'react';
-import MapGL from '@urbica/react-map-gl';
+import React, { PureComponent } from 'react';
 import { initStyle, initViewport } from '../config';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import AceEditor from 'react-ace';
-import 'brace/mode/json';
-import 'brace/theme/github';
 
 import Options from './Options';
+import Map from './Map';
+import Editor from './Editor';
+import InfoPanel from './InfoPanel';
 
 const initValue = JSON.stringify(initStyle, null, 1);
+const style = {
+  display: 'flex',
+  width: '100vw',
+  height: '100vh'
+};
 
-function App() {
-  const [viewport, setViewport] = useState(initViewport);
-  const [value, setValue] = useState(initValue);
-  const [mapStyle, setMapStyle] = useState(initStyle);
-  const [showTileBoundaries, setTileBoundaries] = useState(false);
-
-  const onViewportChange = (newViewport) => {
-    setViewport(newViewport);
+class App extends PureComponent {
+  state = {
+    viewport: initViewport,
+    value: initValue,
+    mapStyle: initStyle,
+    showTileBoundaries: false
   };
 
-  const onChange = (newValue) => {
+  onViewportChange = (newViewport) => {
+    this.setState({ viewport: newViewport });
+  };
+
+  onChange = (newValue) => {
     newValue = newValue.replace(/'/g, '"');
-    setValue(newValue);
+    this.setState({ value: newValue });
 
     try {
       const newStyle = JSON.parse(newValue);
-      setMapStyleHandler(newStyle);
+      this.setMapStyle(newStyle);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const setMapStyleHandler = (newStyle) => {
-    setMapStyle(newStyle);
+  setMapStyle = (newStyle) => {
+    this.setState({ mapStyle: newStyle });
   };
 
-  const onOptionsChange = e => {
-    setTileBoundaries(e.target.checked);
+  onOptionsChange = (e) => {
+    this.setState({ showTileBoundaries: e.target.checked });
   };
 
-  return (
-    <div style={{
-      display: 'flex',
-      width: '100vw',
-      height: '100vh'
-    }}>
-      <Options
-        value={showTileBoundaries}
-        onChange={onOptionsChange}
-      />
-      <MapGL
-        style={{
-          width: '50%',
-          height: '100vh'
-        }}
-        mapStyle={mapStyle}
-        accessToken='pk.eyJ1IjoiZGV2aWNlMjUiLCJhIjoiY2lzaGN3d2tiMDAxOTJ6bGYydDZrcHptdiJ9.UK55aUzBquqYns1AdnuTQg'
-        {...viewport}
-        onViewportChange={onViewportChange}
-        showTileBoundaries={showTileBoundaries}
-      />
-      <AceEditor
-        style={{
-          width: '50%',
-          height: '100vh'
-        }}
-        placeholder='JSON Style here'
-        theme='github'
-        mode='json'
-        name='styleEditor'
-        fontSize={14}
-        showPrintMargin={true}
-        showGutter={true}
-        highlightActiveLine={true}
-        value={value}
-        onChange={onChange}
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: false,
-          enableSnippets: false,
-          showLineNumbers: true,
-          tabSize: 2
-        }}
-      />
-      <div className='zoomPanel'>
-        {`Zoom: ${viewport.zoom.toFixed(2)}`}
+  render() {
+    const { mapStyle, viewport, showTileBoundaries, value } = this.state;
+    const { zoom } = viewport;
+
+    return (
+      <div
+        style={style}
+      >
+        <Options
+          value={showTileBoundaries}
+          onChange={this.onOptionsChange}
+        />
+        <Map
+          mapStyle={mapStyle}
+          viewport={viewport}
+          onViewportChange={this.onViewportChange}
+          showTileBoundaries={showTileBoundaries}
+        />
+        <Editor
+          value={value}
+          onChange={this.onChange}
+        />
+        <InfoPanel
+          zoom={zoom}
+        />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

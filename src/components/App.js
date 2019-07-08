@@ -6,12 +6,15 @@ import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/theme/github';
 
+import Options from './Options';
+
 const initValue = JSON.stringify(initStyle, null, 1);
 
 function App() {
   const [viewport, setViewport] = useState(initViewport);
   const [value, setValue] = useState(initValue);
   const [mapStyle, setMapStyle] = useState(initStyle);
+  const [showTileBoundaries, setTileBoundaries] = useState(false);
 
   const onViewportChange = (newViewport) => {
     setViewport(newViewport);
@@ -33,12 +36,20 @@ function App() {
     setMapStyle(newStyle);
   };
 
+  const onOptionsChange = e => {
+    setTileBoundaries(e.target.checked);
+  };
+
   return (
     <div style={{
       display: 'flex',
       width: '100vw',
       height: '100vh'
     }}>
+      <Options
+        value={showTileBoundaries}
+        onChange={onOptionsChange}
+      />
       <MapGL
         style={{
           width: '50%',
@@ -48,6 +59,7 @@ function App() {
         accessToken='pk.eyJ1IjoiZGV2aWNlMjUiLCJhIjoiY2lzaGN3d2tiMDAxOTJ6bGYydDZrcHptdiJ9.UK55aUzBquqYns1AdnuTQg'
         {...viewport}
         onViewportChange={onViewportChange}
+        showTileBoundaries={showTileBoundaries}
       />
       <AceEditor
         style={{

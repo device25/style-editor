@@ -26,11 +26,11 @@ class App extends PureComponent {
   };
 
   onChange = (newValue) => {
-    newValue = newValue.replace(/'/g, '"');
-    this.setState({ value: newValue });
+    const doubleQuotesValue = newValue.replace(/'/g, '"');
+    this.setState({ value: doubleQuotesValue });
 
     try {
-      const newStyle = JSON.parse(newValue);
+      const newStyle = JSON.parse(doubleQuotesValue);
       this.setMapStyle(newStyle);
     } catch (e) {
       console.error(e);

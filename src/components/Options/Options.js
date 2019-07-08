@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const style = {
   position: 'absolute',
@@ -10,8 +11,9 @@ const style = {
 const Options = ({ value, onChange }) => {
   return (
     <div style={style}>
-      <label>
+      <label htmlFor='tileBoundaries'>
         <input
+          id='tileBoundaries'
           type='checkbox'
           checked={value}
           onChange={onChange}
@@ -20,6 +22,11 @@ const Options = ({ value, onChange }) => {
       </label>
     </div>
   );
+};
+
+Options.propTypes = {
+  value: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default Options;

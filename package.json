@@ -8,24 +8,31 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src --fix"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-style-spec": "13.7.1",
     "@urbica/react-map-gl": "1.8.0",
-    "brace": "^0.11.1",
+    "brace": "0.11.1",
     "mapbox-gl": "1.1.0",
+    "prop-types": "15.7.2",
     "react": "16.8.6",
-    "react-ace": "^7.0.2",
+    "react-ace": "7.0.2",
     "react-dom": "16.8.6"
   },
   "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-urbica": "3.0.0",
     "gh-pages": "2.0.1",
     "git-cz": "3.2.1",
     "react-scripts": "3.0.1"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "urbica/react",
+    "env": {
+      "browser": true
+    }
   },
   "browserslist": [
     ">0.2%",

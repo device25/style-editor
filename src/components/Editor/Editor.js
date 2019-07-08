@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/theme/github';
@@ -25,9 +26,9 @@ const Editor = ({ value, onChange }) => {
       mode='json'
       name='styleEditor'
       fontSize={14}
-      showPrintMargin={true}
-      showGutter={true}
-      highlightActiveLine={true}
+      showPrintMargin
+      showGutter
+      highlightActiveLine
       value={value}
       onChange={onChange}
       setOptions={options}
@@ -35,4 +36,8 @@ const Editor = ({ value, onChange }) => {
   );
 };
 
+Editor.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
 export default Editor;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './InfoPanel.css';
 
 const InfoPanel = ({ zoom }) => {
@@ -9,6 +10,10 @@ const InfoPanel = ({ zoom }) => {
       {info}
     </div>
   );
+};
+
+InfoPanel.propTypes = {
+  zoom: PropTypes.number.isRequired
 };
 
 export default InfoPanel;

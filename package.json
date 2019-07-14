@@ -22,7 +22,6 @@
     "react-dom": "16.8.6"
   },
   "devDependencies": {
-    "eslint": "5.16.0",
     "eslint-config-urbica": "3.0.0",
     "gh-pages": "2.0.1",
     "git-cz": "3.2.1",

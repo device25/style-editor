@@ -17,15 +17,15 @@
     "brace": "0.11.1",
     "mapbox-gl": "1.4.0",
     "prop-types": "15.7.2",
-    "react": "16.10.1",
+    "react": "16.10.2",
     "react-ace": "7.0.4",
-    "react-dom": "16.10.1"
+    "react-dom": "16.10.2"
   },
   "devDependencies": {
     "eslint-config-urbica": "3.0.0",
     "gh-pages": "2.1.1",
     "git-cz": "3.2.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.2.0"
   },
   "eslintConfig": {
     "extends": "urbica/react",
